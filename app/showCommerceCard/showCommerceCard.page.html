@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar mode="ios" color="orange">
+    <ion-buttons slot="end">
+      <ion-icon id="closeModal" name="close" (click)="dismiss()"></ion-icon>
+    </ion-buttons>
+    <div [routerDirection]="'root'" routerLink="/home">
+      <ion-img id="main-logo" src="../../assets/logo_white.png" alt="logo"></ion-img>
+      <p id="main-title" style="position:absolute;top:2.2vh;">buscatõn</p>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="display:flex;justify-items: center;align-items:center;">
+  <ion-card>
+    <img src="https://static.buscaton.com:444/covers/521637/03cf2748-2ba4-409e-8dce-29a1e1c64e22.jpg" />
+    <ion-card-header>
+      <ion-card-title style="font-size:20px;">{{comercio.Name}}</ion-card-title>
+      <ion-card-subtitle style="margin-top:15px;">{{comercio.streetAddress}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div style="position:relative;left:20px;font-size:40px;" id="rating">
+        <p>⋆⋆⋆⋆⋆</p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

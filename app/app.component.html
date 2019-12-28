@@ -1,0 +1,61 @@
+<ion-app>
+  <ion-split-pane>
+    <ion-menu type="overlay">
+      <ion-header>
+        <ion-toolbar color="orange">
+          <ion-title>buscatõn</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content color="orange">
+        <div color="orange">
+          <ion-menu-toggle color="orange" auto-hide="false" >
+
+            <ion-item color="orange" [routerDirection]="'root'" routerLink="/home">
+              <ion-icon color="white" slot="start" name="home"></ion-icon>
+              <ion-label style="font-size:20px;color:white;">
+                Inicio
+              </ion-label>
+            </ion-item>
+
+            <ion-item *ngIf="!loggedIn" color="orange" (click)="presentModal()">
+              <ion-icon color="white" slot="start" [name]="loginIcon"></ion-icon>
+              <ion-label style="font-size:20px;color:white;">
+                Ingresá / Registrate
+              </ion-label>
+            </ion-item>
+
+            <ion-item *ngIf="loggedIn" color="orange" [routerDirection]="'root'" routerLink="/perfil">
+              <ion-icon color="white" slot="start" name="person"></ion-icon>
+              <ion-label style="font-size:20px;color:white;">
+                Mi Cuenta
+              </ion-label>
+            </ion-item>
+
+            <ion-item color="orange" [routerDirection]="'root'" routerLink="/comerciante">
+              <ion-icon color="white" slot="start" name="cart"></ion-icon>
+              <ion-label style="font-size:20px;color:white;">
+                ¿Sos Comerciante?
+              </ion-label>
+            </ion-item>
+
+            <ion-item color="orange" [routerDirection]="'root'" routerLink="/ayuda">
+              <ion-icon color="white" slot="start" name="bulb"></ion-icon>
+              <ion-label style="font-size:20px;color:white;">
+                Ayuda
+              </ion-label>
+            </ion-item>
+
+            <ion-item *ngIf="loggedIn" color="orange" (click)="logout()">
+              <ion-icon color="white" slot="start" name="log-out"></ion-icon>
+              <ion-label style="font-size:20px;color:white;">
+                Cerrar Sesión
+              </ion-label>
+            </ion-item>
+
+          </ion-menu-toggle>
+        </div>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

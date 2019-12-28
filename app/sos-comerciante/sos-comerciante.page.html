@@ -1,0 +1,120 @@
+<ion-header>
+  <ion-toolbar mode="ios" color="orange">
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div [routerDirection]="'root'" routerLink="/home">
+      <ion-img id="main-logo" src="../../assets/logo_white.png" alt="logo"></ion-img>
+      <p id="main-title" style="position:absolute;top:2.2vh;">buscatõn</p>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <div class="sections first-section">
+    <div id="bck-img"></div>
+    <h3 id="orange-title"><ion-text color="orange">El más completo buscador de comercios barrial de buenos aires</ion-text></h3>
+    <p id="first-subtitle">¡Es completamente gratis!</p>
+
+
+    <ul>
+      <li id="item" *ngFor='let item of listText; let i = index'>
+        <p class="list-text"><mark class="item item_{{i}}">{{i}}</mark>{{item.text}}</p>
+      </li>
+    </ul>
+
+    <ion-button [routerDirection]="'root'" routerLink="/start" shape="round" id="start-for-free" expand="block" color="primary">EMPEZÁ GRATIS</ion-button>
+
+  </div>
+
+  <div class="sections second-section">
+    <div id="scnd-bck-img"></div>
+    <h2 text-center style="font-size:20px;position:relative;width:96vw;left:2vw;">
+      <ion-text color="orange">el 60% de los compradores se conecta desde el celular para buscar información.</ion-text>
+    </h2>
+    <p id="second-subtitle" style="width:90vw;position:relative;left:5vw;font-size:16px;">
+      Creá tu sitio web, es fácil! Tu negocio debe estar en internet, con la visibilidad adecuada y en el momento justo. No te quedes afuera!
+    </p>
+    <ion-button [routerDirection]="'root'" routerLink="/start" shape="round" style="margin-top:50px;width:80vw;margin-left:10vw;" id="create-your-site" expand="block" color="primary">
+      CREÁ TU SITIO
+    </ion-button>
+  </div>
+
+  <div class="sections third-section">
+      <div id="thrd-bck-img"></div>
+      <h2 text-center style="font-size:20px;position:relative;width:96vw;left:2vw;">
+        <ion-text color="orange">el 67% de la gente asegura que lo que ve en internet influencia a su decisión de compra.</ion-text>
+      </h2>
+      <p id="second-subtitle" text-center style="width:90vw;position:relative;left:5vw;font-size:16px;">
+          Compartí las opiniones de tus clientes! Podrás mostrar el diferencial de tu comercio, 
+          tu oferta de productos y servicios y compartir las opiniones de tus clientes para seguir ampliando tu red!
+      </p>
+      <ion-button [routerDirection]="'root'" routerLink="/start" shape="round" style="margin-top:50px;width:80vw;margin-left:10vw;" id="create-your-site" expand="block" color="primary">
+        DALE VISIBILIDAD
+      </ion-button>
+  </div>
+
+  <div class="sections fourth-section">
+        <div id="forth-bck-img"></div>
+        <h2 text-center style="font-size:20px;position:relative;width:96vw;left:2vw;">
+          <ion-text color="orange">el 93% de los argentinos busca en internet comercios cercanos.</ion-text>
+        </h2>
+        <p id="second-subtitle" text-center style="width:90vw;position:relative;left:5vw;font-size:16px;">
+            Poné tu negocio en el mapa!. Somos mucho más que un buscador de comercios barrial. 
+            Te damos las herramientas para estar más cerca de tu vecino y brindarle la mejor 
+            experiencia de compra.
+        </p>
+        <ion-button [routerDirection]="'root'" routerLink="/start" shape="round" style="margin-top:50px;width:80vw;margin-left:10vw;margin-bottom:50px;" id="create-your-site" expand="block" color="primary">
+          PONELO EN EL MAPA
+        </ion-button>
+  </div>
+
+  <div class="sections fifth-section">
+    <h1 text-left style="color:white;width:70vw;font-size:30px;position:relative;top:50px;left:10vw;font-family:GothamBold;text-shadow: 2px 2px 4px rgba(0, 0, 0, .5);">
+      ¡Es completamente gratis!
+      <br>
+      Y en solo un minuto podes empezar a usar buscatón.
+    </h1>
+    <div id="start-free" [routerDirection]="'root'" routerLink="/start">
+      <p style="position:relative;top:8px;">COMERZAR GRATIS</p>
+    </div>
+  </div>
+
+  <div class="sections second-section">
+    <h2 style="width:80vw;margin-left:10vw;font-size:28px;margin-bottom:30px;margin-top:30px;" text-center>
+      Todo lo que necesita tu comercio para estar en la web, está acá:
+    </h2>
+    <ul style="padding-left:5vw;font-family:GothamBold;font-size:18px;width:100vw;">
+      <li text-left style="margin-top:15px;" *ngFor="let items of listOfBenefits">
+        {{items.text}}
+        <p style="font-size:12px;font-family:arial;font-weight:initial;color:grey;" *ngIf="items.text != ''">{{items.subtext}}</p>
+      </li>
+    </ul>
+
+    <ion-button [routerDirection]="'root'" routerLink="/start" shape="round" style="margin-top:50px;width:80vw;margin-left:10vw;margin-bottom:50px;" id="create-your-site" expand="block" color="primary">
+        COMENZAR GRATIS
+      </ion-button>
+  </div>
+
+  <div style="margin-bottom:50px;width: 100vw;height: 70vh;background-image: url(../../assets/fourth_section.jpg);background-repeat: no-repeat;background-position: 70% 100%;background-size: cover;background-color: #000;background-blend-mode: screen;">
+    <h1 text-left style="color:white;width:70vw;font-size:30px;position:relative;top:50px;left:10vw;font-family:GothamBold;text-shadow: 2px 2px 4px rgba(0, 0, 0, .5);">
+        Pensado 100% para que tu comercio
+        <br>
+        tenga presencia en internet
+    </h1>
+    <div id="start-free" [routerDirection]="'root'" routerLink="/start">
+      <p style="position:relative;top:7px;">COMERZAR GRATIS</p>
+    </div>
+  </div>
+
+  <faq></faq>
+
+  <div id="footer-section" style="width:100vw;height:7vh;border-top: 1px solid rgba(0,0,0,.05);background-color:#faf9f9 !important;" id="footer">
+    <ion-footer style="margin-top:50px;">
+      <img src="../../assets/logo-orange.png">
+      <h6>&copy;2011-{{currentDate}} buscaton.com</h6>
+    </ion-footer>
+  </div>
+
+</ion-content>

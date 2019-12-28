@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar mode="ios" color="orange">
+    <ion-buttons slot="end">
+      <ion-icon id="closeModal" name="close" (click)="dismiss()"></ion-icon>
+    </ion-buttons>
+    <div (click)="dismiss()" [routerDirection]="'root'" routerLink="/home">
+      <ion-img id="main-logo" src="../../assets/logo_white.png" alt="logo"></ion-img>
+      <p id="main-title" style="position:absolute;top:2.2vh;">buscatõn</p>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <agm-map 
+    style="width:100vw;height:89vh;margin-top:40px;position:relative;" 
+    [latitude]="comercios.cords.lat" 
+    [longitude]="comercios.cords.lng"
+    [zoom]="zoom"
+    [zoomControl]="false">
+
+      <agm-marker 
+        *ngFor="let comercio of datos" 
+        [latitude]="comercio.LatLng.split(',')[0]" 
+        [longitude]="comercio.LatLng.split(',')[1]"
+        (markerClick)="comercioCliqueado(comercio)">
+      </agm-marker>
+    </agm-map>
+
+    <div
+     id="seccion-inferior"
+     style="width: 100vw;height:auto;padding:3vh 0vh;background-color:white;position: absolute;bottom:0;left: 0;">
+
+     <ion-button 
+      size="small" 
+      fill="outline"
+      color="primary" 
+      mode="ios"
+      style="display:block;margin: 20px auto; width:50vw;"
+      (click)="irAlistadoDeComercios()">
+        ver listado
+      </ion-button>
+    </div>
+
+</ion-content>

@@ -1,0 +1,88 @@
+#banner {
+    width: 100vw;
+    min-height: 30vh;
+    background-color: white;
+    background-image: url('../../assets/bck-orange.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    top: -5vh;
+}
+
+#banner-title {
+    font-family: GothamBold !important;
+    font-size: 40px !important;
+    position: relative !important;
+    top: 5vh !important;
+}
+
+#banner-subtitle {
+    width: 90%;
+    font-family: GothamBold !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+    color: rgba(255, 255, 255, .85) !important;
+    position: relative !important;
+    top: 5vh !important;
+    left: 5%;
+}
+
+.items{
+    width: 80vw !important;
+    position: relative !important;
+    left: 7.5vw !important;
+}
+
+input {
+    height:30px;
+}
+
+#footer{
+    position: relative;
+    bottom: 0;
+}
+  
+#footer img{
+    height: 5vh;
+    width: auto;
+    position: absolute;
+    left: 10px;
+    bottom: 6px;
+}
+  
+#footer h6 {
+    position: absolute;
+    margin-block-start: 0px !important;
+    margin-block-end: 0px !important;
+    margin-inline-start: 0px !important;
+    margin-inline-end: 0px !important;
+    font-weight: bold;
+    color: lightgrey;
+    right: 10px;
+    bottom: 8px;
+}
+
+ion-content #footer {
+    background-color: #f2f2f2 !important;
+}
+
+#levels-content {
+    width: 50vw !important;
+    height: 30px !important;
+    border:1px solid grey !important;
+}
+
+
+#steps {
+    width: 160px;
+    height:40px;
+    position: absolute;
+    top: 6px;
+    left: 35vw;
+    transition: all .2s ease-in 0s;
+}
+
+.active {
+    background-color: white;
+}

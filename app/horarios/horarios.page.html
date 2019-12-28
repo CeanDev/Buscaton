@@ -1,0 +1,382 @@
+<ion-header>
+  <ion-toolbar mode="ios" color="orange">
+    <ion-buttons slot="end">
+      <ion-icon id="closeModal" name="close" (click)="dismiss()"></ion-icon>
+    </ion-buttons>
+    <div (click)="dismiss()" [routerDirection]="'root'" routerLink="/home">
+      <ion-img id="main-logo" src="../../assets/logo_white.png" alt="logo"></ion-img>
+      <p id="main-title" style="position:absolute;top:2.2vh;">buscatõn</p>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <h1 style="text-align:center;font-size:20px; margin: 30px 0;">
+    <ion-text color="orange">
+      Horarios de Atención
+    </ion-text>
+  </h1>
+
+  <ion-item style="border-bottom:1px solid rgba(0, 0, 0, .2); border-top:1px solid rgba(0, 0, 0, .2);">
+    <ion-label>Mismo horario de Lunes a Viernes</ion-label>
+    <ion-checkbox color="primary" slot="start"></ion-checkbox>
+  </ion-item>
+
+  <div style="border-bottom:1px solid rgba(0, 0, 0, .2);">
+    <h1 style="font-size:18px;margin-top:20px;margin-bottom:20px;text-align:center;">
+      <ion-text color="orange">Lunes</ion-text>
+    </h1>
+
+    <div class="onoffswitch" style="margin-bottom:40px;">
+      <input type="checkbox" #s1 name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch1" checked>
+      <label class="onoffswitch-label" for="myonoffswitch1">
+        <span class="onoffswitch-inner"></span>
+        <span class="onoffswitch-switch"></span>
+      </label>
+    </div>
+
+    <ion-item>
+      <div style="width:50vw;height:auto;border:1px solid black;">
+        <ion-item class="width:50vw;">
+          <ion-label>Desde</ion-label>
+          <ion-datetime displayFormat="h:mm a"></ion-datetime>
+        </ion-item>
+      </div>
+      <div style="width:50vw;height:auto;border:1px solid black;border-left:none;">
+        <ion-item class="width:50vw;">
+          <ion-label>Hasta</ion-label>
+          <ion-datetime displayFormat="h:mm a"></ion-datetime>
+        </ion-item>
+      </div>
+    </ion-item>
+
+    <ion-item *ngIf="!s1.checked" style="margin-top:30px;">
+      <div style="width:50vw;height:auto;border:1px solid black;">
+        <ion-item class="width:50vw;">
+          <ion-label>Desde</ion-label>
+          <ion-datetime displayFormat="h:mm a"></ion-datetime>
+        </ion-item>
+      </div>
+      <div style="width:50vw;height:auto;border:1px solid black;border-left:none;">
+        <ion-item class="width:50vw;">
+          <ion-label>Hasta</ion-label>
+          <ion-datetime displayFormat="h:mm a"></ion-datetime>
+        </ion-item>
+      </div>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>cerrado este día</ion-label>
+      <ion-checkbox color="primary" slot="start"></ion-checkbox>
+    </ion-item>
+  </div>
+
+  <div *ngIf="!mismoHorario">
+    <div style="border-bottom:1px solid rgba(0, 0, 0, .2);">
+      <h1 style="font-size:18px;margin-top:20px;margin-bottom:20px;text-align:center;">
+        <ion-text color="orange">Martes</ion-text>
+      </h1>
+
+      <div class="onoffswitch" style="margin-bottom:40px;">
+        <input type="checkbox" #s2 name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch2" checked>
+        <label class="onoffswitch-label" for="myonoffswitch2">
+          <span class="onoffswitch-inner"></span>
+          <span class="onoffswitch-switch"></span>
+        </label>
+      </div>
+
+      <ion-item>
+        <div style="width:50vw;height:auto;border:1px solid black;">
+          <ion-item class="width:50vw;">
+            <ion-label>Desde</ion-label>
+            <ion-datetime displayFormat="h:mm a"></ion-datetime>
+          </ion-item>
+        </div>
+        <div style="width:50vw;height:auto;border:1px solid black;border-left:none;">
+          <ion-item class="width:50vw;">
+            <ion-label>Hasta</ion-label>
+            <ion-datetime displayFormat="h:mm a"></ion-datetime>
+          </ion-item>
+        </div>
+      </ion-item>
+
+      <ion-item *ngIf="!s2.checked" style="margin-top:30px;">
+        <div style="width:50vw;height:auto;border:1px solid black;">
+          <ion-item class="width:50vw;">
+            <ion-label>Desde</ion-label>
+            <ion-datetime displayFormat="h:mm a"></ion-datetime>
+          </ion-item>
+        </div>
+        <div style="width:50vw;height:auto;border:1px solid black;border-left:none;">
+          <ion-item class="width:50vw;">
+            <ion-label>Hasta</ion-label>
+            <ion-datetime displayFormat="h:mm a"></ion-datetime>
+          </ion-item>
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>cerrado este día</ion-label>
+        <ion-checkbox color="primary" slot="start"></ion-checkbox>
+      </ion-item>
+    </div>
+    
+    <div style="border-bottom:1px solid rgba(0, 0, 0, .2);">
+      <h1 style="font-size:18px;margin-top:20px;margin-bottom:20px;text-align:center;">
+        <ion-text color="orange">Miércoles</ion-text>
+      </h1>
+
+      <div class="onoffswitch" style="margin-bottom:40px;">
+          <input type="checkbox" #s3 name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch3" checked>
+          <label class="onoffswitch-label" for="myonoffswitch3">
+            <span class="onoffswitch-inner"></span>
+            <span class="onoffswitch-switch"></span>
+          </label>
+        </div>
+
+      <ion-item>
+        <div style="width:50vw;height:auto;border:1px solid black;">
+          <ion-item class="width:50vw;">
+            <ion-label>Desde</ion-label>
+            <ion-datetime displayFormat="h:mm a"></ion-datetime>
+          </ion-item>
+        </div>
+        <div style="width:50vw;height:auto;border:1px solid black;border-left:none;">
+          <ion-item class="width:50vw;">
+            <ion-label>Hasta</ion-label>
+            <ion-datetime displayFormat="h:mm a"></ion-datetime>
+          </ion-item>
+        </div>
+      </ion-item>
+
+      <ion-item *ngIf="!s3.checked" style="margin-top:30px;">
+        <div style="width:50vw;height:auto;border:1px solid black;">
+          <ion-item class="width:50vw;">
+            <ion-label>Desde</ion-label>
+            <ion-datetime displayFormat="h:mm a"></ion-datetime>
+          </ion-item>
+        </div>
+        <div style="width:50vw;height:auto;border:1px solid black;border-left:none;">
+          <ion-item class="width:50vw;">
+            <ion-label>Hasta</ion-label>
+            <ion-datetime displayFormat="h:mm a"></ion-datetime>
+          </ion-item>
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>cerrado este día</ion-label>
+        <ion-checkbox color="primary" slot="start"></ion-checkbox>
+      </ion-item>
+    </div>
+
+    <div style="border-bottom:1px solid rgba(0, 0, 0, .2);">
+      <h1 style="font-size:18px;margin-top:20px;margin-bottom:20px;text-align:center;">
+        <ion-text color="orange">Jueves</ion-text>
+      </h1>
+
+    <div class="onoffswitch" style="margin-bottom:40px;">
+        <input type="checkbox" #s4 name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch4" checked>
+        <label class="onoffswitch-label" for="myonoffswitch4">
+          <span class="onoffswitch-inner"></span>
+          <span class="onoffswitch-switch"></span>
+        </label>
+      </div>
+
+      <ion-item>
+        <div style="width:50vw;height:auto;border:1px solid black;">
+          <ion-item class="width:50vw;">
+            <ion-label>Desde</ion-label>
+            <ion-datetime displayFormat="h:mm a"></ion-datetime>
+          </ion-item>
+        </div>
+        <div style="width:50vw;height:auto;border:1px solid black;border-left:none;">
+          <ion-item class="width:50vw;">
+            <ion-label>Hasta</ion-label>
+            <ion-datetime displayFormat="h:mm a"></ion-datetime>
+          </ion-item>
+        </div>
+      </ion-item>
+
+      <ion-item *ngIf="!s4.checked" style="margin-top:30px;">
+        <div style="width:50vw;height:auto;border:1px solid black;">
+          <ion-item class="width:50vw;">
+            <ion-label>Desde</ion-label>
+            <ion-datetime displayFormat="h:mm a"></ion-datetime>
+          </ion-item>
+        </div>
+        <div style="width:50vw;height:auto;border:1px solid black;border-left:none;">
+          <ion-item class="width:50vw;">
+            <ion-label>Hasta</ion-label>
+            <ion-datetime displayFormat="h:mm a"></ion-datetime>
+          </ion-item>
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>cerrado este día</ion-label>
+        <ion-checkbox color="primary" slot="start"></ion-checkbox>
+      </ion-item>
+    </div>
+
+    <div style="border-bottom:1px solid rgba(0, 0, 0, .2);">
+      <h1 style="font-size:18px;margin-top:20px;margin-bottom:20px;text-align:center;">
+        <ion-text color="orange">Viernes</ion-text>
+      </h1>
+
+      <div class="onoffswitch" style="margin-bottom:40px;">
+          <input type="checkbox" #s5 name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch5" checked>
+          <label class="onoffswitch-label" for="myonoffswitch5">
+            <span class="onoffswitch-inner"></span>
+            <span class="onoffswitch-switch"></span>
+          </label>
+        </div>
+
+      <ion-item>
+        <div style="width:50vw;height:auto;border:1px solid black;">
+          <ion-item class="width:50vw;">
+            <ion-label>Desde</ion-label>
+            <ion-datetime displayFormat="h:mm a"></ion-datetime>
+          </ion-item>
+        </div>
+        <div style="width:50vw;height:auto;border:1px solid black;border-left:none;">
+          <ion-item class="width:50vw;">
+            <ion-label>Hasta</ion-label>
+            <ion-datetime displayFormat="h:mm a"></ion-datetime>
+          </ion-item>
+        </div>
+      </ion-item>
+
+      <ion-item *ngIf="!s5.checked" style="margin-top:30px;">
+        <div style="width:50vw;height:auto;border:1px solid black;">
+          <ion-item class="width:50vw;">
+            <ion-label>Desde</ion-label>
+            <ion-datetime displayFormat="h:mm a"></ion-datetime>
+          </ion-item>
+        </div>
+        <div style="width:50vw;height:auto;border:1px solid black;border-left:none;">
+          <ion-item class="width:50vw;">
+            <ion-label>Hasta</ion-label>
+            <ion-datetime displayFormat="h:mm a"></ion-datetime>
+          </ion-item>
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>cerrado este día</ion-label>
+        <ion-checkbox color="primary" slot="start"></ion-checkbox>
+      </ion-item>
+    </div>
+
+    <div style="border-bottom:1px solid rgba(0, 0, 0, .2);">
+      <h1 style="font-size:18px;margin-top:20px;margin-bottom:20px;text-align:center;">
+        <ion-text color="orange">Sábado</ion-text>
+      </h1>
+
+      <div class="onoffswitch" style="margin-bottom:40px;">
+          <input type="checkbox" #s6 name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch6" checked>
+          <label class="onoffswitch-label" for="myonoffswitch6">
+            <span class="onoffswitch-inner"></span>
+            <span class="onoffswitch-switch"></span>
+          </label>
+        </div>
+
+      <ion-item>
+        <div style="width:50vw;height:auto;border:1px solid black;">
+          <ion-item class="width:50vw;">
+            <ion-label>Desde</ion-label>
+            <ion-datetime displayFormat="h:mm a"></ion-datetime>
+          </ion-item>
+        </div>
+        <div style="width:50vw;height:auto;border:1px solid black;border-left:none;">
+          <ion-item class="width:50vw;">
+            <ion-label>Hasta</ion-label>
+            <ion-datetime displayFormat="h:mm a"></ion-datetime>
+          </ion-item>
+        </div>
+      </ion-item>
+
+      <ion-item *ngIf="!s6.checked" style="margin-top:30px;">
+        <div style="width:50vw;height:auto;border:1px solid black;">
+          <ion-item class="width:50vw;">
+            <ion-label>Desde</ion-label>
+            <ion-datetime displayFormat="h:mm a"></ion-datetime>
+          </ion-item>
+        </div>
+        <div style="width:50vw;height:auto;border:1px solid black;border-left:none;">
+          <ion-item class="width:50vw;">
+            <ion-label>Hasta</ion-label>
+            <ion-datetime displayFormat="h:mm a"></ion-datetime>
+          </ion-item>
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>cerrado este día</ion-label>
+        <ion-checkbox color="primary" slot="start"></ion-checkbox>
+      </ion-item>
+    </div>
+
+    <div style="border-bottom:1px solid rgba(0, 0, 0, .2);">
+      <h1 style="font-size:18px;margin-top:20px;margin-bottom:20px;text-align:center;">
+        <ion-text color="orange">Domingo</ion-text>
+      </h1>
+
+      <div class="onoffswitch" style="margin-bottom:40px;">
+          <input type="checkbox" #s7 name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch7" checked>
+          <label class="onoffswitch-label" for="myonoffswitch7">
+            <span class="onoffswitch-inner"></span>
+            <span class="onoffswitch-switch"></span>
+          </label>
+        </div>
+
+      <ion-item>
+        <div style="width:50vw;height:auto;border:1px solid black;">
+          <ion-item class="width:50vw;">
+            <ion-label>Desde</ion-label>
+            <ion-datetime displayFormat="h:mm a"></ion-datetime>
+          </ion-item>
+        </div>
+        <div style="width:50vw;height:auto;border:1px solid black;border-left:none;">
+          <ion-item class="width:50vw;">
+            <ion-label>Hasta</ion-label>
+            <ion-datetime displayFormat="h:mm a"></ion-datetime>
+          </ion-item>
+        </div>
+      </ion-item>
+
+      <ion-item *ngIf="!s7.checked" style="margin-top:30px;">
+        <div style="width:50vw;height:auto;border:1px solid black;">
+          <ion-item class="width:50vw;">
+            <ion-label>Desde</ion-label>
+            <ion-datetime displayFormat="h:mm a"></ion-datetime>
+          </ion-item>
+        </div>
+        <div style="width:50vw;height:auto;border:1px solid black;border-left:none;">
+          <ion-item class="width:50vw;">
+            <ion-label>Hasta</ion-label>
+            <ion-datetime displayFormat="h:mm a"></ion-datetime>
+          </ion-item>
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>cerrado este día</ion-label>
+        <ion-checkbox color="primary" slot="start"></ion-checkbox>
+      </ion-item>
+    </div>
+  </div>
+  
+  <div style="margin: 30px 0;">
+    <ion-button mode="ios" style="width:40vw; margin-left:7.5vw;margin-right:2.5vw;">
+      aceptar
+    </ion-button>
+
+    <ion-button (click)="dismiss()" mode="ios" style="width:40vw; margin-left:2.5vw;margin-right:7.5vw;">
+      cancelar
+    </ion-button>
+  </div>
+
+</ion-content>

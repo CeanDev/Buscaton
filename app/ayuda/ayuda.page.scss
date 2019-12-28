@@ -1,0 +1,44 @@
+#all {
+    width: 90vw;
+    height: auto;
+    position: relative;
+    left: 5vw;
+}
+
+#first-title {
+    font-family: GothamBold;
+    font-size: 24px;
+    text-align: center;
+}
+
+h2 {
+    font-family: 28px;
+    font-weight: bold;
+    color: #1175d7;
+    text-align: center;
+}
+
+#footer {
+    position: relative;
+    background-color:red !important;
+  }
+  
+  #footer img{
+    height: 5vh;
+    width: auto;
+    position: absolute;
+    left: 10px;
+    bottom: 6px;
+  }
+  
+  #footer h6 {
+    position: absolute;
+    margin-block-start: 0px !important;
+    margin-block-end: 0px !important;
+    margin-inline-start: 0px !important;
+    margin-inline-end: 0px !important;
+    font-weight: bold;
+    color: lightgrey;
+    right: 10px;
+    bottom: 8px;
+  }

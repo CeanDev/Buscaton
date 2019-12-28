@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar mode="ios" color="orange">
+    <ion-buttons slot="end">
+      <ion-icon id="closeModal" name="close" (click)="dismiss()"></ion-icon>
+    </ion-buttons>
+    <div (click)="dismiss()" [routerDirection]="'root'" routerLink="/home">
+      <ion-img id="main-logo" src="../../assets/logo_white.png" alt="logo"></ion-img>
+      <p id="main-title" style="position:absolute;top:2.2vh;">buscatõn</p>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <h1 style="margin-top:20px;" text-center class="title">
+      <ion-text color="orange">Ingresar a mi cuenta</ion-text>
+    </h1>
+
+    <ion-list id="buttonsContainer">
+      <ion-item color="redG" class="signInButtons">
+        <div class="inner inner1">
+          <ion-img class="icons gplus" src="../../assets/gplus_logo.png"></ion-img>
+        </div>
+        <div class="inner inner2" (click)="login()">
+          <p id="continue-with" style="font-family:GothamBold;font-size:16px;">Continuar con Google</p>
+        </div>
+      </ion-item>
+
+      <ion-item color="blueFb" class="signInButtons">
+          <div class="inner inner1">
+            <ion-img class="icons fb" style="left:2%" src="../../assets/fb_logo.png"></ion-img>
+          </div>
+          <div class="inner inner2">
+            <p id="continue-with" style="font-family:GothamBold;font-size:16px;">Continuar con Facebook</p>
+          </div>
+        </ion-item>
+    </ion-list>
+
+    <ion-item class="items">
+      <ion-label position="floating">E-mail</ion-label>
+      <ion-input id="email" required type="text"></ion-input>
+    </ion-item>
+
+    <ion-item class="items">
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input id="password" required type="password"></ion-input>
+    </ion-item>
+
+    <ion-button 
+      style="margin:0 auto;margin-top:30px;display:block;width:80vw;" 
+      shape="round" 
+      expand="block" 
+      fill="outline" 
+      color="primary">
+        ENTRAR
+    </ion-button>
+
+    <div style="width:100vw;text-align: center;margin-top:10px;">
+      <p>
+        <input type="checkbox" style="position:relative;top:10px;left:-10px"/>
+        <mark style="background-color: transparent;margin-top:-30px;">Mantener mi seción iniciada</mark>
+      </p>
+      <p style="color:rgb(39, 86, 155);margin-top:10px;">recuperar contraseña</p>
+    </div>
+
+    <ion-button
+      style="margin:0 auto;margin-top:20px;display:block;width:40vw;height: 40px" 
+      expand="block" 
+      fill="outline" 
+      color="primary"
+      shape="round"
+      (click)="openRegisterModal()">
+      registrate
+    </ion-button>
+
+</ion-content>

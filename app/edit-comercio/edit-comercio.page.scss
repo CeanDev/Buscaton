@@ -1,0 +1,35 @@
+#closeModal {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    position: relative;
+    right: 10px;
+}
+
+.card {
+    border: none;
+    margin-bottom: 10px;;
+}
+
+.card-header {
+    width: 80vw;
+    height: auto;
+    padding: 5px !important;
+    border-radius: 10px;
+    position: relative;
+    left: 10vw;
+    text-align: center;
+}
+
+.main-topic {
+    font-size: 16px;
+    color: grey;
+    padding: 0;
+}
+
+.card-body {
+    width: 100vw;
+}

@@ -1,0 +1,194 @@
+<ion-header>
+  <ion-toolbar mode="ios" color="orange">
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div *ngIf="moreThanFirstStep" [routerDirection]="'root'" routerLink="/home">
+      <ion-img id="main-logo" src="../../assets/logo_white.png" alt="logo"></ion-img>
+      <p id="main-title" style="position:absolute;top:2.2vh;">buscatõn</p>
+    </div>
+    <ion-button (click)="goBack()" style="width:25vw;height:30px;" shape="round" color="primary" *ngIf="!moreThanFirstStep">volver</ion-button>
+    <div id="steps">
+      <div #step1 class="step" style="display:flex;justify-items:center;align-items:center;width:40px;height:40px;background:rgba(255,255,255,.3);border-radius:50%;">
+        <ion-text color="orange"><span style="position:relative;left:15px;font-size:18px;font-weight:bold;">1</span></ion-text>
+      </div>
+      <div #step2 class="step" style="display:flex;justify-items:center;align-items:center;width:40px;height:40px;background:rgba(255,255,255,.3);border-radius:50%;position:relative;top:-40px;left:70px;">
+        <ion-text color="orange"><span style="position:relative;left:15px;font-size:18px;font-weight:bold;">2</span></ion-text>
+      </div>
+      <div #step3 class="step" style="display:flex;justify-items:center;align-items:center;width:40px;height:40px;background:rgba(255,255,255,.3);border-radius:50%;position:relative;top:-80px;left:140px;">
+        <ion-text color="orange"><span style="position:relative;left:15px;font-size:18px;font-weight:bold;">3</span></ion-text>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div #banner id="banner">
+    <h4 #mainTitle id="banner-title" text-center>
+      <ion-text style="font-size:28px" color="white">
+        {{shownText.title1}}
+        <br/>
+        {{shownText.title2}}
+      </ion-text>
+    </h4>
+    <p style="font-size:14px !important;" #mainSubtitle text-center id="banner-subtitle">{{shownText.subtitle1}} <br/> {{shownText.subtitle2}}</p>
+  </div>
+
+  <h1 *ngIf="showSectionOne" style="margin-top:5px; font-size: 30px;" text-center class="title">
+    <ion-text color="primary">Ingresá el nombre y/o <br> dirección de tu comercio</ion-text>
+  </h1>
+
+
+  <div *ngIf="showSectionOne" id="section-one">
+      <ion-item style="margin-top:4vh;" class="items">
+        <ion-label>Barrio</ion-label>
+        <ion-select mode="ios">
+          <ion-select-option value="{{town}}" *ngFor="let town of towns">{{town}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="items">
+        <ion-label position="floating">Dirección</ion-label>
+        <ion-input id="text" required type="text"></ion-input>
+      </ion-item>
+    
+      <ion-item class="items">
+        <ion-label position="floating">Nombre de tu comercio</ion-label>
+        <ion-input id="text" required type="password"></ion-input>
+      </ion-item>
+    
+      <ion-button 
+          #search
+          style="margin:0 auto;margin-top:7vh;display:block;width:80vw;" 
+          shape="round" 
+          expand="block" 
+          fill="outline" 
+          color="primary"
+          (click)="getResults()">
+            BUSCAR
+      </ion-button>
+  </div>
+
+  <div *ngIf="showResults" id="results" style="margin-top:10vh;">
+
+    <ion-card *ngFor="let result of results" style="width:80vw;margin-left:10vw;">
+      <ion-card-header>
+        <ion-card-title style="font-size:20px;">{{result.name}}</ion-card-title>
+        <br>
+        <ion-card-subtitle>{{result.address}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-button (click)="next(result)" color="primary" expand="block" fill="outline" style="display:block;margin:0 auto;">
+          registrar
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card color="orange" style="width:80vw;margin-left:10vw;margin-top:40px; margin-bottom:30px;">
+      <ion-card-header>
+        <ion-card-title style="font-size:20px;"><ion-text color="white">¿No lo encontrás?</ion-text></ion-card-title>
+        <br>
+        <ion-card-subtitle><ion-text color="white">¡No te preocupes!</ion-text></ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-button (click)="next()" color="white" expand="block" fill="outline" style="display:block;margin:0 auto;">
+          ¡sumalo ahora!
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
+  <div *ngIf="showFillInfo" id="section-two">
+      <ion-item class="items">
+        <ion-label position="floating">Calle</ion-label>
+        <ion-input id="text" required type="text"></ion-input>
+      </ion-item>
+      <ion-item class="items">
+        <ion-label position="floating">Número</ion-label>
+        <ion-input id="number" required type="text"></ion-input>
+      </ion-item>
+      <ion-item style="margin-top:4vh;" class="items">
+        <ion-label>Barrio</ion-label>
+        <ion-select mode="ios">
+          <ion-select-option value="{{town}}" *ngFor="let town of towns">{{town}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item style="margin-top:4vh;" class="items">
+        <ion-label>Provincia</ion-label>
+        <ion-select mode="ios">
+          <ion-select-option value="Ciudad de Buenos Aires">Ciudad de Buenos Aires</ion-select-option>
+          <ion-select-option value="Entre Ríos">Entre Ríos</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+
+      <!--<agm-map style="width:90vw;position:relative;left:5vw;height:30vh;" [latitude]="lat" [longitude]="lng">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>-->
+
+      <div style="border-radius:10px;margin-top:30px;width:90vw !important;height: 200px !important;position:relative !important;left:5vw !important;background-image:url(https://www.jqueryscript.net/images/Show-Nearby-Places-jQuery-Google-Maps-WhatsNearby.jpg);background-repeat:no-repeat;background-position: center;background-size:cover;"></div>
+
+      <ion-button color="primary" expand="block" style="display:block;margin:30px auto; width: 60vw;">
+        Confirmar Dirección
+      </ion-button>
+
+      <ion-item class="items">
+        <ion-label position="floating">Nombre del comercio</ion-label>
+        <ion-input id="text" [value]="results.name" required type="text"></ion-input>
+      </ion-item>
+      <ion-item class="items">
+        <ion-label position="floating">Teléfono</ion-label>
+        <ion-input id="number" required type="text"></ion-input>
+      </ion-item>
+      <ion-item class="items">
+        <ion-label position="floating">Código Postal</ion-label>
+        <ion-input id="text" required type="text"></ion-input>
+      </ion-item>
+      <ion-item class="items">
+        <ion-label position="floating">Piso/ Depto/ Local</ion-label>
+        <ion-input id="number" required type="text"></ion-input>
+      </ion-item>
+      <ion-item class="items">
+        <ion-label position="floating">Entre calles</ion-label>
+        <ion-input id="text" required type="text"></ion-input>
+      </ion-item>
+      <ion-item class="items">
+        <ion-label position="floating">Selecciona el/los rubros</ion-label>
+        <ion-input id="text" required type="text"></ion-input>
+      </ion-item>
+
+      <div style="position:relative;left:10vw;margin-top:20px;margin-bottom:40px;width:30vw;height:40px;border-radius:20px;background-color:#3880ff">
+        <p style="position:absolute;top:10px;left:12px;font-size:14px;color:white;">Retratos</p>
+        <div style="width:20px;height:20px;border-radius:50%;border:1px solid white;color:white;position:relative;left:75%;top:10px;">
+          <p style="position:relative;left:5px;top:-5px;">x</p>
+        </div>
+      </div>
+
+      <ion-button (click)="next()" color="primary" shape="round" expand="block" style="display:block;margin:30px auto; width: 60vw;">
+        Confirmar Datos
+      </ion-button>
+  </div>
+
+  <div style="width:100vw;height:40vh;" id="bottom-section" *ngIf="showBottomSection">
+    <h1 style="margin-top:5px; font-size: 20px;width:80vw;position:relative;left:10vw;" text-center class="title">
+      <ion-text color="medium">
+        ¡Comenzá a armar tu vidriera digital ahora! 
+        <br/><br/>
+        Formás parte de buscatón 
+        <br/>
+        ¡el mayor sitio digital de comercios de Buenos Aires!
+      </ion-text>
+    </h1>
+
+    <ion-button color="primary" shape="round" fill="outline" expand="block" style="display:block;margin:30px auto; width: 60vw;">
+      Ingresá a tu sitio
+    </ion-button>
+    
+  </div>
+  
+
+  
+
+</ion-content>

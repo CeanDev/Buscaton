@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar mode="ios" color="orange">
+    <ion-buttons mode="ios" slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div>
+      <ion-img mode="ios" id="main-logo" src="../../assets/logo_white.png" alt="logo"></ion-img>
+      <p id="main-title" style="position:absolute;top:2.2vh;">buscatõn</p>
+    </div>
+    <div [routerDirection]="'root'" routerLink="/comerciante" id="caller">
+      <ion-img mode="ios" id="icon-commerce" src="../../assets/icon-comercio-blanco.svg" alt="¿sos comerciante?"></ion-img>
+    </div>
+    <p [routerDirection]="'root'" routerLink="/comerciante" id="sosComerciante" style="position:absolute;top:2.2vh;">¿sos comerciante?</p>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios">
+
+    <div class="section first-section">
+      <form id="search_form" [formGroup]="searchForm">
+        <h1 id="title_search">Buscá ofertas y comercios en</h1>
+        <ion-select value="caballito" text-center id="select_town" placeholder="Seleccioná un barrio" formControlName="town">
+          <ion-select-option style="color: orange" *ngFor="let town of towns;let i = index;" [value]="town.value">{{ town.name }}</ion-select-option>
+        </ion-select>
+        <ion-input text-center class="input_search" type="text" placeholder="comercio, rubro, producto" (change)="autocomplete()" formControlName="type"></ion-input>
+        <ion-button (click)="onSubmit()" id="search" color="violet" style="font-size: 20px;" expand="block">Encontrá</ion-button>
+      </form>
+    </div>
+
+    <div class="section second-section">
+        
+        <h2>Comercios y Servicios</h2>
+        <p class="subtitulo">Todo lo que tenemos para vos</p>
+  
+        <ion-slides pager="true">
+            <ion-slide *ngFor="let slide of slides1">
+              <img class="slide-img" [src]="'https://static.buscaton.com:444/' + slide.DefaultPictureFilePath"/>
+              <h1 class="title_img">{{slide.Name}}</h1>
+              <p class="button_img_slide" (click)="openList(1,'',slide.Name)">ver más</p>
+            </ion-slide>
+        </ion-slides>
+  
+        <ion-button (click)="openList(2)" style="font-size:16px;" expand="block" fill="clear" id="verTodosLosRubros" shape="round">
+          ver todos los rubros
+        </ion-button>
+  
+      </div>
+
+
+      <div class="section third-section">
+          <h2>comercios destacados</h2>
+          <ion-slides pager="true">
+              <ion-slide *ngFor="let sld of slides2">
+                <img class="slide-img" [src]="'https://static.buscaton.com:444/' + sld.LogoFilePath"/>
+                <h1 class="title_img">{{sld.Name}}</h1>
+                <p class="button_img_slide" (click)="abrirVidriera(sld.Id)">ver más</p>
+              </ion-slide>
+          </ion-slides>
+        </div>
+
+
+    <div class="section fourth-section">
+      <div id="main_fourth_content">
+        <h1>¿tenés un <br> comercio?</h1>
+        <h6>Llegamos a tu barrio. Sumá tu comercio o servicio a buscatón</h6>
+        <p [routerDirection]="'root'" routerLink="/comerciante">este es mi comercio</p>
+      </div>
+      <div id="footer-section" style="width:100vw;height:7vh;border-top: 1px solid rgba(0,0,0,.05);background-color:#faf9f9 !important;" id="footer">
+        <ion-footer style="margin-top:50px;">
+          <img src="../../assets/logo-orange.png">
+          <h6>&copy;2011-{{currentDate}} buscaton.com</h6>
+        </ion-footer>
+      </div>
+    </div>
+</ion-content>

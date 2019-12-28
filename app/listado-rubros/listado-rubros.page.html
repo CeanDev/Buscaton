@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar mode="ios" color="orange">
+    <ion-buttons mode="ios" slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div [routerDirection]="'root'" routerLink="/home">
+      <ion-img mode="ios" id="main-logo" src="../../assets/logo_white.png" alt="logo"></ion-img>
+      <p id="main-title" style="position:absolute;top:2.2vh;">buscatõn</p>
+    </div>
+    <div [routerDirection]="'root'" routerLink="/comerciante" id="caller">
+      <ion-img mode="ios" id="icon-commerce" src="../../assets/icon-comercio-blanco.svg" alt="¿sos comerciante?"></ion-img>
+    </div>
+    <p [routerDirection]="'root'" routerLink="/comerciante" id="sosComerciante" style="position:absolute;top:2.2vh;">¿sos comerciante?</p>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <h1 style="margin:40px 0; font-size: 24px;" text-center class="title">
+      <ion-text color="primary">Listado de rubros en {{town}} </ion-text>
+    </h1>
+    
+    <div id="list">
+      <ion-card *ngFor="let rubro of rubros" style="border-radius:10px; width:80vw; margin:20px 10vw;">
+        <img [src]="'https://static.buscaton.com:444/' + rubro.DefaultPictureFilePath"/>
+        <ion-card-header>
+          <ion-card-title style="font-size:20px;">{{rubro.Name}}</ion-card-title>
+          <br>
+          <ion-card-subtitle>Cantidad de comercios: &nbsp;
+            <ion-text style="font-size:16px;color:black;">{{rubro.Count}}</ion-text>
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-button (click)="showRubrosInMap(rubro.Name)" color="primary" expand="block" fill="outline" style="display:block;margin:0 auto;">
+            ver
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+</ion-content>

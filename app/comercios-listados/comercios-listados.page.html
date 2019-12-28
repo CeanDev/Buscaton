@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar mode="ios" color="orange">
+    <ion-buttons mode="ios" slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div [routerDirection]="'root'" routerLink="/mapaylistado">
+      <ion-button color="white" size="small" fill="outline" slot="start">volver</ion-button>
+    </div>
+    <div [routerDirection]="'root'" routerLink="/comerciante" id="caller">
+      <ion-img mode="ios" id="icon-commerce" src="../../assets/icon-comercio-blanco.svg" alt="¿sos comerciante?"></ion-img>
+    </div>
+    <p [routerDirection]="'root'" routerLink="/comerciante" id="sosComerciante" style="position:absolute;top:2.2vh;">¿sos comerciante?</p>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div id="list">
+    <ion-card *ngFor="let comercio of comercios" style="border-radius:10px; width:80vw; margin:20px 10vw;">
+      <!--<img [src]="'https://static.buscaton.com:444/logos/' + comercio.business.Business.DefaultPictureId + '.jpg'"/>-->
+      <ion-card-header>
+        <ion-card-title style="font-size:20px;">{{comercio.Name}}</ion-card-title>
+        <br>
+        <ion-card-subtitle>{{comercio.StreetAddress}}</ion-card-subtitle>
+        </ion-card-header>
+        <div style="position:relative;left:20px;" id="rating">
+          <p style="font-family:stars;">
+            <mark style="background-color:transparent;color:gold;">wwww</mark>w
+          </p>
+        </div>
+        <ion-card-content>
+        <ion-button color="primary" shape="round" expand="block" fill="outline" style="display:block;margin:0 auto;">
+          Ver Comercio
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>

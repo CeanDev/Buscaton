@@ -1,0 +1,142 @@
+<ion-header>
+  <ion-toolbar mode="ios" color="orange">
+    <ion-buttons slot="end">
+      <ion-icon id="closeModal" name="close" (click)="dismiss()"></ion-icon>
+    </ion-buttons>
+    <div (click)="dismiss()" [routerDirection]="'root'" routerLink="/home">
+      <ion-img id="main-logo" src="../../assets/logo_white.png" alt="logo"></ion-img>
+      <p id="main-title" style="position:absolute;top:2.2vh;">buscatõn</p>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <img style="width:100vw;height:40vh;" src="https://static.buscaton.com:444/segment/21.jpg?1067786834" alt="portada"/>
+  
+  <div style="text-shadow:1px 1px 2px #333;margin-left:5vw;width:70vw;font-weight:bold;position:relative;top:-20vh;">
+    <p><ion-text style="font-size:22px;position:relative;top:30px;" color="white">{{comercio.Business.Name}}</ion-text></p>
+    <p><ion-text style="font-size:18px;position:relative;top:15px;" color="white">{{comercio.Business.TagName}}</ion-text></p>
+    <div style="position:relative;left:20px;font-size:40px;" id="rating">
+      <p>⋆⋆⋆⋆⋆</p>
+    </div>
+  </div>
+
+  <div style="height:40px;position:relative;top:-17.9vh;">
+    <div style="width:25%;position:absolute;height:100%;border:1px solid rgba(0,0,0,.1);border-top:none;font-weight:bold;font-size:145x;text-align:center;left:0;">
+      <ion-text style="position:relative;top:7px;" color="medium">
+        Info
+      </ion-text>
+    </div>
+    <div style="width:25%;position:absolute;height:100%;border:1px solid rgba(0,0,0,.1);border-top:none;font-weight:bold;font-size:145x;text-align:center;left:25%;">
+      <ion-text style="position:relative;top:7px;" color="medium">
+        Vidriera
+      </ion-text>
+    </div>
+    <div style="width:25%;position:absolute;height:100%;border:1px solid rgba(0,0,0,.1);border-top:none;font-weight:bold;font-size:145x;text-align:center;left:50%;">
+      <ion-text style="position:relative;top:7px;" color="medium">
+        Ofertas
+      </ion-text>
+    </div>
+    <div style="width:25%;position:absolute;height:100%;border:1px solid rgba(0,0,0,.1);border-top:none;font-weight:bold;font-size:145x;text-align:center;left:75%;">
+      <ion-text style="position:relative;top:7px;" color="medium">
+        Opiniones
+      </ion-text>
+    </div>
+  </div>
+
+  <div style="position:relative;top:-17.7vh;">
+    <ion-item>
+      <ion-label>
+        Horarios
+      </ion-label>
+      <ion-text style="font-size:15px;color:rgb(116, 116, 116);position:relative;top:2px;">Horario no disponible</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        Pagos
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        Extras
+      </ion-label>
+      <ion-text style="font-size:15px;color:rgb(116, 116, 116);position:relative;top:2px;">E-mail: cristian.annese.cea@gmail.com</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        Rubros
+      </ion-label>
+      <ion-chip outline color="primary">
+        <ion-icon name="beer"></ion-icon>
+        <ion-label>Bar</ion-label>
+        <ion-icon name="close-circle"></ion-icon>
+      </ion-chip>
+      <ion-chip outline color="primary">
+        <ion-icon name="restaurant"></ion-icon>
+        <ion-label>Restó</ion-label>
+        <ion-icon name="close-circle"></ion-icon>
+      </ion-chip>
+    </ion-item>
+
+    <ion-item style="margin-bottom:50px;">
+      <ion-label>
+        Dirección
+      </ion-label>
+      <ion-text style="font-size:15px;color:rgb(116, 116, 116);position:relative;top:2px;">
+        {{comercio.Business.HeadLocation.Street + ' ' + comercio.Business.HeadLocation.Number}}
+      </ion-text>
+    </ion-item>
+
+    <agm-map 
+    style="width:90vw;height:300px;position:relative;left:5vw;" 
+    [latitude]="comercio.Business.HeadLocation.Latitude" 
+    [longitude]="comercio.Business.HeadLocation.Longitude"
+    [zoom]="16"
+    [zoomControl]="false">
+
+      <agm-marker
+        [latitude]="comercio.Business.HeadLocation.Latitude" 
+        [longitude]="comercio.Business.HeadLocation.Longitude">
+      </agm-marker>
+    </agm-map>
+
+    <ion-item style="margin-bottom:5px;margin-top:5px;width:90vw;margin-left:2.5vw;"></ion-item>
+
+    <p style="font-size:14px;color:rgb(116, 116, 116);text-align:center; width:90vw;margin-left:5vw;">
+      {{comercio.Business.OurCompany}}
+      Somos Griselda y Gustavo. Podes encontrarnos en el local 4 de la galería Centenera y 
+      solicitar turnos al 11 4904-1580. Creemos que el tatuaje es una forma de expresar lo 
+      libres que somos, como nos sentimos y que nos representa. Ofrecemos diferentes estilos, 
+      entre ellos watercolor (acuarelas), linework (lineales), dot work (puntillismo) y 
+      freeestyle (estilo libre). Te esperamos!
+    </p>
+
+    <ion-item style="margin-bottom:5px;margin-top:5px;width:90vw;margin-left:2.5vw;"></ion-item>
+    
+    <ion-item style="margin-bottom:5px;margin-top:5px;width:90vw;margin-left:2.5vw;">
+      <ion-text text-align style="font-size:16px;">Sugerencias:</ion-text>
+    </ion-item>
+
+
+    <div id="list">
+      <ion-card *ngFor="let similar of comercio.SimilarBusinesses" style="border-radius:10px; width:80vw; margin:20px 10vw;">
+        <ion-card-header>
+          <ion-card-title style="font-size:20px;">{{similar.Name}}</ion-card-title>
+          <br>
+          <ion-card-subtitle>{{similar.StreetAddress}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-button color="primary" expand="block" fill="outline" style="display:block;margin:0 auto;">
+            ver
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    
+  </div>
+
+</ion-content>

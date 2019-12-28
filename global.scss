@@ -1,0 +1,232 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+ @import "./theme/variables.scss";
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+/* Fonts */
+
+@font-face {
+  font-family: GothamBold;
+  src: url(./assets/fonts/GothamBold.woff);
+}
+
+@font-face {
+  font-family: stars;
+  src: url(./assets/fonts/stars.ttf);
+}
+
+.ion-color-orange {
+    --ion-color-base: var(--ion-color-orange) !important;
+    --ion-color-base-rgb: var(--ion-color-orange-rgb) !important;
+    --ion-color-contrast: var(--ion-color-orange-contrast) !important;
+    --ion-color-contrast-rgb: var(--ion-color-orange-contrast-rgb) !important;
+    --ion-color-shade: var(--ion-color-orange-shade) !important;
+    --ion-color-tint: var(--ion-color-orange-tint) !important;
+}
+
+.ion-color-violet {
+  --ion-color-base: var(--ion-color-violet) !important;
+  --ion-color-base-rgb: var(--ion-color-violet-rgb) !important;
+  --ion-color-contrast: var(--ion-color-violet-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-violet-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-violet-shade) !important;
+  --ion-color-tint: var(--ion-color-violet-tint) !important;
+}
+
+.ion-color-white {
+  --ion-color-base: var(--ion-color-white) !important;
+  --ion-color-base-rgb: var(--ion-color-white-rgb) !important;
+  --ion-color-contrast: var(--ion-color-white-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-white-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-white-shade) !important;
+  --ion-color-tint: var(--ion-color-white-tint) !important;
+}
+
+.ion-color-redG {
+  --ion-color-base: var(--ion-color-redG) !important;
+  --ion-color-base-rgb: var(--ion-color-redG-rgb) !important;
+  --ion-color-contrast: var(--ion-color-redG-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-redG-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-redG-shade) !important;
+  --ion-color-tint: var(--ion-color-redG-tint) !important;
+}
+
+.ion-color-blueFb {
+  --ion-color-base: var(--ion-color-blueFb) !important;
+  --ion-color-base-rgb: var(--ion-color-blueFb-rgb) !important;
+  --ion-color-contrast: var(--ion-color-blueFb-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-blueFb-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-blueFb-shade) !important;
+  --ion-color-tint: var(--ion-color-blueFb-tint) !important;
+}
+
+ion-toolbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px !important;
+    border-bottom: 1.5px solid white !important;
+}
+
+ion-title {
+    font-size: 22px !important;
+    color: white !important;
+}
+
+#main-logo{
+    width: 10vw;
+    height: 11vw;
+}
+  
+#main-title {
+    position: absolute;
+    top: .5vh;
+    left: 12vw;
+    color: white;
+    font-family: GothamBold;
+    font-size: 16px;
+}
+  
+#caller {
+    position: absolute;
+    top: .6vh; 
+    left: 75vw;
+    width: 42px;
+    height: 42px;
+    border-radius: 50px;
+    background-color: #7f41bd;
+    transition: all .05s ease-in 0s;
+    animation-name: caller;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+  
+@keyframes caller {
+    10%{width: 50px; left: calc(75vw - 8px);}
+    30%{width: 185px; left: calc(75vw - 143px);}
+    100%{width: 185px; left: calc(75vw - 143px); }
+}
+  
+#icon-commerce{
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    top: 8px;
+    right: 14px;
+    transition: all .05s ease-in 0s;
+    animation-name: commerce;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+  
+@keyframes commerce {
+    4%{right: 12px; top:10px}
+    8%{right: 16px; top:8px}
+    12%{right: 10px; top:11px}
+    16%{right:17px; top:9px}
+    20%{right: 14px; top:12px}
+    24%{right:16px; top:10px}
+    30%{right: 14px; top:8px}
+}
+  
+#sosComerciante {
+    opacity: 0;
+    font-family: GothamBold;
+    font-size: 12px;
+    color: white;
+    position: absolute;
+    top: .7vh;
+    left: calc(75vw - 130px);
+    transition: none;
+    animation-name: commerceText;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+  
+@keyframes commerceText {
+    0%{opacity: 0;}
+    25%{opacity: 0;}
+    26%{opacity: 1;}
+    100%{opacity: 1;}
+}
+  
+@media only screen and (max-width: 320px){
+  
+    #main-logo{
+      position: relative;
+      left: 5px;
+      width: 9vw;
+      height: 9.5vh;
+    }
+  
+    #main-title {
+      top: 2vh;
+      left: 14vw;
+      font-size: 12px;
+    }
+  
+    #caller {
+      top: 2.8vh;
+      height: 32px;
+    }
+  
+    #icon-commerce{
+      width: 22px;
+      height: 22px;
+      position: absolute;
+      top: 5px;
+      right: 10px;
+    }
+  
+    @keyframes commerce {
+      4%{right: 12px; top:9px}
+      8%{right: 16px; top:4px}
+      12%{right: 10px; top:6px}
+      16%{right:17px; top:8px}
+      20%{right: 14px; top:5px}
+      24%{right:16px; top:9px}
+      30%{right: 14px; top:5px}
+    }
+  
+    @keyframes caller {
+      10%{width: 50px; left: calc(75vw - 8px);}
+      30%{width: 165px; left: calc(75vw - 123px);}
+      100%{width: 165px; left: calc(75vw - 123px); }
+    }
+  
+    #sosComerciante {
+      position: relative;
+      top: 4vh;
+      left: calc(75vw - 110px);
+      font-size: 11px;
+    }
+    
+}
+
+#verTodosLosRubros {
+  font-size: 24px;
+}

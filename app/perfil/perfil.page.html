@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar mode="ios" color="orange">
+    <ion-buttons mode="ios" slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div [routerDirection]="'root'" routerLink="/home">
+      <ion-img mode="ios" id="main-logo" src="../../assets/logo_white.png" alt="logo"></ion-img>
+      <p id="main-title" style="position:absolute;top:2.2vh;">buscatõn</p>
+    </div>
+    <div [routerDirection]="'root'" routerLink="/comerciante" id="caller">
+      <ion-img mode="ios" id="icon-commerce" src="../../assets/icon-comercio-blanco.svg" alt="¿sos comerciante?"></ion-img>
+    </div>
+    <p [routerDirection]="'root'" routerLink="/comerciante" id="sosComerciante" style="position:absolute;top:2.2vh;">¿sos comerciante?</p>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <h1 style="margin:30px 0;" text-center class="title">
+      <ion-text color="orange">Tu Vidriera Digital</ion-text>
+    </h1>
+
+    <ion-card style="width:80vw;margin-left:10vw;border-radius:15px;">
+        <img src="https://static.buscaton.com:444/segment/21.jpg"/>
+      <ion-card-header>
+        <ion-card-title style="font-size:20px;">Bar Söt</ion-card-title>
+        <br>
+        <ion-card-subtitle>Ladines 2493, CABA</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content style="margin-bottom:10px;">
+        <ion-buttons style="display:block;margin:15px auto;">
+          <ion-button color="primary" style="width:45%;font-size:12px;margin-right:5%;" fill="outline" (click)="presentModal(4)">ver</ion-button>
+          <ion-button color="primary" style="width:45%;font-size:12px;" fill="outline" (click)="presentModal(1)">editar</ion-button>
+        </ion-buttons>
+        <ion-buttons style="display:block;margin:0 auto;">
+          <ion-button color="primary" style="width:45%;font-size:12px;margin-right:5%;" fill="outline">promociones</ion-button>
+          <ion-button color="primary" style="width:45%;font-size:12px;" fill="outline" (click)="presentModal(3)">vidriera</ion-button>
+        </ion-buttons>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card color="orange" style="border-radius:15px;width:80vw;margin:30px 10vw;">
+      <ion-card-header>
+        <ion-card-title text-center style="font-size:20px;">
+          <ion-text color="white">¿Querés sumar un nuevo comercio?</ion-text>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content style="margin-bottom:10px;">
+          <ion-button 
+          color="white" 
+          style="width:70%;margin-left:15%;font-size:12px;" 
+          fill="outline"
+          expand="block">¡Agregalo!</ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card color="primary" style="border-radius:15px;width:80vw;margin:30px 10vw;">
+      <ion-card-header>
+        <ion-card-title text-center style="font-size:20px;">
+          <ion-text color="white">Editá tus datos</ion-text>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content style="margin-bottom:10px;">
+          <ion-button 
+          color="white" 
+          style="width:70%;margin-left:15%;font-size:12px;" 
+          fill="outline"
+          expand="block"
+          (click)="presentModal(2)">
+            editar
+          </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+
+</ion-content>

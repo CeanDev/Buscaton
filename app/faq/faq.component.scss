@@ -1,0 +1,38 @@
+#faq {
+    width: 100vw;
+    height: auto;
+    margin-bottom: 50px;
+}
+
+.card {
+    border: none;
+    margin-bottom: 10px;;
+}
+
+.card-header {
+    width: 80vw;
+    height: auto;
+    padding: 5px !important;
+    border-radius: 10px;
+    position: relative;
+    left: 10vw;
+    text-align: center;
+}
+
+.main-topic {
+    font-size: 16px;
+    color: grey;
+    padding: 0;
+}
+
+.card-body {
+    text-align: center;
+    width: 80vw;
+    position: relative;
+    left: 10vw;
+}
+
+#faq h1 {
+    font-family: GothamBold;
+    font-size: 30px;
+}

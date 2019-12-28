@@ -1,0 +1,338 @@
+<ion-header>
+    <ion-toolbar mode="ios" color="orange">
+      <ion-buttons slot="end">
+        <ion-icon id="closeModal" name="close" (click)="dismiss()"></ion-icon>
+      </ion-buttons>
+      <div (click)="dismiss()" [routerDirection]="'root'" routerLink="/home">
+        <ion-img id="main-logo" src="../../assets/logo_white.png" alt="logo"></ion-img>
+        <p id="main-title" style="position:absolute;top:2.2vh;">buscatõn</p>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+
+    <div class="accordion" id="accordionExample" style="margin-top:40px;">
+
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <p class="main-topic btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                  Logo del Comercio
+              </p>
+            </h2>
+          </div>
+      
+          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <ion-card style="width:80vw;margin-left:5vw;border-radius:15px;">
+                    <img id="previewLogo" #imgPreview [src]="defaultLogoImg"/>
+                  <ion-card-header>
+                    <ion-card-title style="font-size:20px;">Logo del comercio</ion-card-title>
+                    <br>
+                    <ion-card-subtitle>Cambiá o cargá un nuevo logo para tu comercio</ion-card-subtitle>
+                  </ion-card-header>
+                  <ion-card-content style="margin-bottom:10px;">
+                      <ion-button color="primary" style="width:70%;margin-left:15%;font-size:12px;position:relative;" fill="outline">cargá una foto
+                        <input 
+                          id="uploadLogo" 
+                          #logoEdit 
+                          type="file" 
+                          accept=".jpg, .jpeg, .gif, .png"
+                          style="width:100%;height:100%;position:absolute;top:0;left:0;opacity:0;"
+                          (change)="getImg($event, imgPreview)">
+                      </ion-button>
+                      <ion-button (click)="cancelLogoChange(imgPreview)" color="primary" style="width:70%;margin-left:15%;font-size:12px;position:relative;" fill="outline">
+                        cancelar
+                      </ion-button>
+                  </ion-card-content>
+                </ion-card>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+              <p class="main-topic btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Foto de Portada
+              </p>
+            </h2>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+                <ion-card style="width:80vw;margin-left:5vw;border-radius:15px;">
+                    <img id="previewMain" #imgPreviewMain [src]="defaultLogoImg"/>
+                  <ion-card-header>
+                    <ion-card-title style="font-size:20px;">Portada del comercio</ion-card-title>
+                    <br>
+                    <ion-card-subtitle>Cambiá o cargá una nueva foto de portada para tu comercio</ion-card-subtitle>
+                  </ion-card-header>
+                  <ion-card-content style="margin-bottom:10px;">
+                      <ion-button color="primary" style="width:70%;margin-left:15%;font-size:12px;position:relative;" fill="outline">cargá una foto
+                        <input 
+                          id="uploadLogo" 
+                          #MainImgEdit 
+                          type="file" 
+                          accept=".jpg, .jpeg, .gif, .png"
+                          style="width:100%;height:100%;position:absolute;top:0;left:0;opacity:0;"
+                          (change)="getImg($event, imgPreviewMain)">
+                      </ion-button>
+                      <ion-button (click)="cancelLogoChange(imgPreviewMain)" color="primary" style="width:70%;margin-left:15%;font-size:12px;position:relative;" fill="outline">
+                        cancelar
+                      </ion-button>
+                  </ion-card-content>
+                </ion-card>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h2 class="mb-0">
+              <p class="main-topic btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Dirección de tu comercio
+              </p>
+            </h2>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body">
+                <agm-map 
+                style="width:80vw;height:200px;margin-top:10px;position:relative;left:5vw;" 
+                [latitude]="comercio.cords.lat" 
+                [longitude]="comercio.cords.lng"
+                [zoom]="zoom"
+                [zoomControl]="false">
+                  <agm-marker [latitude]="comercio.cords.lat" [longitude]="comercio.cords.lng"></agm-marker>
+                </agm-map>
+
+                <ion-button (click)="presentModal(1)" expand="block" color="primary" shape="round" style="width:70%;margin:30px 15%;margin-bottom:10px;">
+                  editar dirección
+                </ion-button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="headingFour">
+            <h2 class="mb-0">
+              <p class="main-topic btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                Nombre del Comercio
+              </p>
+            </h2>
+          </div>
+          <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+            <div class="card-body">
+              <ion-item style="width:80%;position:relative;left:10vw;">
+                <ion-input class="inputs" type="text" [value]="comercio.nombre"></ion-input>
+              </ion-item>
+              <ion-button color="primary" style="width:50vw;height:40px;display:block;margin:0 auto;margin-top:20px;">guardar</ion-button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="headingFive">
+            <h2 class="mb-0">
+              <p class="main-topic btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                Contacto
+              </p>
+            </h2>
+          </div>
+      
+          <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+            <div class="card-body" style="width:80%;position:relative;left:10vw;">
+              <ion-item style="margin-top:20px;">
+                <ion-label position="floating">E-mal</ion-label>
+                <ion-input class="inputs" type="text" [value]="comercio.email"></ion-input>
+              </ion-item>
+              <ion-item style="margin-top:20px;">
+                <ion-label position="floating">Sitio Web</ion-label>
+                <ion-input class="inputs" type="text" [value]="comercio.web"></ion-input>
+              </ion-item>
+              <ion-item style="margin-top:20px;">
+                <ion-label position="floating">Teléfono (comercio)</ion-label>
+                <ion-input class="inputs" type="text" [value]="comercio.tel_c"></ion-input>
+              </ion-item>
+              <ion-item style="margin-top:20px;">
+                <ion-label position="floating">Teléfono (alternativo)</ion-label>
+                <ion-input class="inputs" type="text" [value]="comercio.tel_a"></ion-input>
+              </ion-item>
+              <ion-item style="margin-top:20px;">
+                <ion-label position="floating">Teléfono (Whatsapp)</ion-label>
+                <ion-input class="inputs" type="text" [value]="comercio.wsp"></ion-input>
+              </ion-item>
+              <ion-button color="primary" style="width:50vw;height:40px;display:block;margin:0 auto;margin-top:20px;">editar</ion-button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="headingSix">
+            <h2 class="mb-0">
+              <p class="main-topic btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                Redes Sociales
+              </p>
+            </h2>
+          </div>
+          <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+              <div class="card-body" style="width:80%;position:relative;left:10vw;">
+                  <ion-item style="margin-top:20px;">
+                    <ion-label position="floating">Facebook</ion-label>
+                    <ion-input class="inputs" type="text" [value]="comercio.redes.facebook"></ion-input>
+                  </ion-item>
+                  <ion-item style="margin-top:20px;">
+                    <ion-label position="floating">Instagram</ion-label>
+                    <ion-input class="inputs" type="text" [value]="comercio.redes.instagram"></ion-input>
+                  </ion-item>
+                  <ion-item style="margin-top:20px;">
+                    <ion-label position="floating">Pedidos Ya</ion-label>
+                    <ion-input class="inputs" type="text" [value]="comercio.redes.pedidos_ya"></ion-input>
+                  </ion-item>
+                  <ion-item style="margin-top:20px;">
+                    <ion-label position="floating">Mercado Libre</ion-label>
+                    <ion-input class="inputs" type="text" [value]="comercio.redes.mercado_libre"></ion-input>
+                  </ion-item>
+                  <ion-button color="primary" style="width:50vw;height:40px;display:block;margin:0 auto;margin-top:20px;">guardar</ion-button>
+                </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="headingSeven">
+            <h2 class="mb-0">
+              <p class="main-topic btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                Sobre Nosotros
+              </p>
+            </h2>
+          </div>
+          <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
+            <div class="card-body" style="width:80%;position:relative;left:10vw;">
+              <ion-item>
+                <ion-label position="floating">Editá tu descripción</ion-label>
+                <ion-textarea></ion-textarea>
+              </ion-item>
+              <ion-button color="primary" style="width:50vw;height:40px;display:block;margin:0 auto;margin-top:20px;">guardar</ion-button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="headingEight">
+            <h2 class="mb-0">
+              <p class="main-topic btn btn-link collapsed" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                Horario
+              </p>
+            </h2>
+          </div>
+          <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordionExample">
+            <div class="card-body">
+              <ion-button (click)="presentModal(2)" color="primary" style="width:50vw;height:40px;display:block;margin:0 auto;margin-top:20px;">
+                ver/editar
+              </ion-button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="headingNine">
+            <h2 class="mb-0">
+              <p class="main-topic btn btn-link collapsed" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                Medios de Pago
+              </p>
+            </h2>
+          </div>
+          <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordionExample">
+            <div class="card-body">
+              <ion-button (click)="presentModal(3)" color="primary" style="width:50vw;height:40px;display:block;margin:0 auto;margin-top:20px;">ver/editar</ion-button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="headingTen">
+            <h2 class="mb-0">
+              <p class="main-topic btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                Rubros
+              </p>
+            </h2>
+          </div>
+          <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordionExample">
+           <div class="card-body" style="width:80%;position:relative;left:10vw;">
+              <p>
+                <ion-chip style="display:block;margin:0 auto;width:40vw;" outline color="secondary">
+                  <ion-icon name="beer"></ion-icon>
+                  <ion-label>Cervecería</ion-label>
+                  <ion-icon name="close-circle"></ion-icon>
+                </ion-chip>
+                <ion-chip style="display:block;margin:0 auto;width:30vw;margin-top:20px;"  outline color="secondary">
+                  <ion-icon name="wine"></ion-icon>
+                  <ion-label>Bar</ion-label>
+                  <ion-icon name="close-circle"></ion-icon>
+                </ion-chip>
+              </p>
+              <ion-item *ngIf="editarRubrosHabilitado" style="width:80%;position:relative;left:10vw;">
+                <ion-label position="floating">Ej: Restaurant</ion-label>
+                <ion-input class="inputs" type="text"></ion-input>
+              </ion-item>
+              <ion-button *ngIf="editarRubrosHabilitado" style="width:30vw;height:30px;display:block;margin:20px auto;" fill="outline" color="primary">agregar</ion-button>
+              <ion-button (click)="editarRubros()" color="primary" style="width:50vw;height:40px;display:block;margin:0 auto;margin-top:20px;">editar</ion-button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="headingEleven">
+            <h2 class="mb-0">
+              <p class="main-topic btn btn-link collapsed" data-toggle="collapse" data-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+                Galería de Fotos
+              </p>
+            </h2>
+          </div>
+          <div id="collapseEleven" class="collapse" aria-labelledby="headingEleven" data-parent="#accordionExample">
+            <div class="card-body">
+                <ion-card style="width:80vw;margin-left:5vw;border-radius:15px;">
+                    <img id="previewGaleria" #imgGaleria [src]="defaultLogoImg"/>
+                  <ion-card-header>
+                    <ion-card-title style="font-size:20px;">Galería de Fotos</ion-card-title>
+                    <br>
+                    <ion-card-subtitle>Subí todas las fotos que quieras a tu negocio</ion-card-subtitle>
+                  </ion-card-header>
+                  <ion-card-content style="margin-bottom:10px;">
+                      <ion-button color="primary" style="width:70%;margin-left:15%;font-size:12px;position:relative;" fill="outline">cargá una foto
+                        <input 
+                          id="uploadGaleria" 
+                          #logoEdit 
+                          type="file" 
+                          accept=".jpg, .jpeg, .gif, .png"
+                          style="width:100%;height:100%;position:absolute;top:0;left:0;opacity:0;"
+                          (change)="getImg($event, imgGaleria)">
+                      </ion-button>
+                      <ion-button (click)="cancelLogoChange(imgGaleria)" color="primary" style="width:70%;margin-left:15%;font-size:12px;position:relative;" fill="outline">
+                        cancelar
+                      </ion-button>
+                  </ion-card-content>
+                </ion-card>
+            </div>
+          </div>
+        </div>
+
+        <ion-button 
+          style="width:60vw;height:40px;display:block;margin:0 auto;margin-top:30px;"
+          shape="round"
+          fill="outline"
+          color="primary">
+            cancelar edición
+        </ion-button>
+
+        <ion-button 
+          style="width:60vw;height:40px;display:block;margin:30px auto;"
+          shape="round"
+          fill="outline"
+          color="danger">
+            eliminar este comercio
+      </ion-button>
+
+    </div>
+
+</ion-content>

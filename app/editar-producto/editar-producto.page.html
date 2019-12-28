@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar mode="ios" color="orange">
+    <ion-buttons slot="end">
+      <ion-icon id="closeModal" name="close" (click)="dismiss()"></ion-icon>
+    </ion-buttons>
+    <div (click)="dismiss()" [routerDirection]="'root'" routerLink="/home">
+      <ion-img id="main-logo" src="../../assets/logo_white.png" alt="logo"></ion-img>
+      <p id="main-title" style="position:absolute;top:2.2vh;">buscatõn</p>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <h1 style="text-align:center;font-size:22px;margin:30px 0;">
+        <ion-text color="orange">Formulario de Producto</ion-text>
+    </h1>
+  
+    <ion-item style="width:80%;position:relative;left:10vw;">
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input class="inputs" type="text"></ion-input>
+    </ion-item>
+  
+    <ion-item style="width:80%;position:relative;left:10vw;">
+      <ion-label position="floating">Precio</ion-label>
+      <ion-input class="inputs" type="text"></ion-input>
+    </ion-item>
+  
+    <ion-item style="width:80%;position:relative;left:10vw;">
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-input class="inputs" type="text"></ion-input>
+    </ion-item>
+
+    <ion-select mode="ios" interface="action-sheet" style="width:80%;position:relative;left:10vw;margin-top:30px;" placeholder="Seleccioná una categoría">
+      <ion-select-option value="c1">Categoría Nº1</ion-select-option>
+      <ion-select-option value="c2">Categoría Nº2</ion-select-option>
+      <ion-select-option value="c3">Categoría Nº3</ion-select-option>
+    </ion-select>
+
+    <ion-item style="width:80vw;margin-left:10vw;margin:30px 0;">
+      <ion-label style="position:relative;left:10vw;">Destacar</ion-label>
+      <ion-checkbox style="position:relative;left:10vw;" slot="start" color="primary"></ion-checkbox>
+    </ion-item>
+  
+    <ion-button color="primary" style="width:80vw;height:40px;margin-left:10vw;margin-top:30px;">Cargar Imágenes</ion-button>
+
+
+    <ion-button color="primary" style="width:35vw;height:40px;margin-left:12vw;margin-right:4vw;margin-top:30px;margin-bottom:30px;">Aceptar</ion-button>
+    <ion-button (click)="dismiss()" color="primary" style="width:35vw;height:40px;margin-left:4vw;margin-top:30px;margin-bottom:30px;">Cancelar</ion-button>
+
+</ion-content>

@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-toolbar mode="ios" color="orange">
+      <ion-buttons slot="end">
+        <ion-icon id="closeModal" name="close" (click)="dismiss()"></ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <h1 style="font-size:18px;margin-top:20px;" text-center class="title">
+    <ion-text color="orange">Te registraste correctamente <br> con {{regMethod}}</ion-text>
+  </h1>
+
+  <h1 style="font-size:18px;margin-top:20px;" text-center class="title">
+    <ion-text color="orange">Por favor confirmá tu mail y tu nombre <br> para comenzar a usar buscatón</ion-text>
+  </h1>
+
+  <ion-item class="items">
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input value="Juan Ignacio" disabled required type="text"></ion-input>
+  </ion-item>
+
+  <ion-item class="items">
+    <ion-label position="floating">E-mail</ion-label>
+    <ion-input value="ejemplo@gmail.com" disabled required type="email"></ion-input>
+  </ion-item>
+
+  <ion-button 
+      style="margin:0 auto;margin-top:30px;display:block;width:80vw;" 
+      shape="round" 
+      fill="outline" 
+      color="primary">
+        ACEPTAR
+  </ion-button>
+
+  <ion-button 
+      style="margin:0 auto;margin-top:30px;display:block;width:80vw;" 
+      shape="round" 
+      fill="outline" 
+      color="primary">
+        CANCELAR
+  </ion-button>
+
+</ion-content>
