@@ -10,7 +10,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content style="background-color:#f3f3f3;">
 
   <img style="width:100vw;height:40vh;" src="https://static.buscaton.com:444/segment/21.jpg?1067786834" alt="portada"/>
   
@@ -18,34 +18,36 @@
     <p><ion-text style="font-size:22px;position:relative;top:30px;" color="white">{{comercio.Business.Name}}</ion-text></p>
     <p><ion-text style="font-size:18px;position:relative;top:15px;" color="white">{{comercio.Business.TagName}}</ion-text></p>
     <div style="position:relative;left:20px;font-size:40px;" id="rating">
-      <p>⋆⋆⋆⋆⋆</p>
+      <p style="color:gold; position:relative; left:-20px;top:-10px;">⋆⋆⋆⋆⋆</p>
     </div>
   </div>
 
-  <div style="height:40px;position:relative;top:-17.9vh;">
+  <div style="height:40px;position:relative;top:-23.9vh;">
     <div style="width:25%;position:absolute;height:100%;border:1px solid rgba(0,0,0,.1);border-top:none;font-weight:bold;font-size:145x;text-align:center;left:0;">
-      <ion-text style="position:relative;top:7px;" color="medium">
+      <ion-text style="position:relative;top:7px;" color="medium" (click)="changeWindow('info')">
         Info
       </ion-text>
     </div>
     <div style="width:25%;position:absolute;height:100%;border:1px solid rgba(0,0,0,.1);border-top:none;font-weight:bold;font-size:145x;text-align:center;left:25%;">
-      <ion-text style="position:relative;top:7px;" color="medium">
+      <ion-text style="position:relative;top:7px;" color="medium" (click)="changeWindow('vidriera')">
         Vidriera
       </ion-text>
     </div>
     <div style="width:25%;position:absolute;height:100%;border:1px solid rgba(0,0,0,.1);border-top:none;font-weight:bold;font-size:145x;text-align:center;left:50%;">
-      <ion-text style="position:relative;top:7px;" color="medium">
+      <ion-text style="position:relative;top:7px;" color="medium" (click)="changeWindow('ofertas')">
         Ofertas
       </ion-text>
     </div>
     <div style="width:25%;position:absolute;height:100%;border:1px solid rgba(0,0,0,.1);border-top:none;font-weight:bold;font-size:145x;text-align:center;left:75%;">
-      <ion-text style="position:relative;top:7px;" color="medium">
+      <ion-text style="position:relative;top:7px;" color="medium" (click)="changeWindow('opiniones')">
         Opiniones
       </ion-text>
     </div>
   </div>
 
-  <div style="position:relative;top:-17.7vh;">
+  <!--Sección de contenidos-->
+
+  <div id="info" style="position:relative;top:-23.7vh;">
     <ion-item>
       <ion-label>
         Horarios
@@ -115,14 +117,67 @@
       freeestyle (estilo libre). Te esperamos!
     </p>
 
-    <ion-item style="margin-bottom:5px;margin-top:5px;width:90vw;margin-left:2.5vw;"></ion-item>
-    
-    <ion-item style="margin-bottom:5px;margin-top:5px;width:90vw;margin-left:2.5vw;">
-      <ion-text text-align style="font-size:16px;">Sugerencias:</ion-text>
-    </ion-item>
+  </div>
 
-
+  <div id="vidriera" style="display:none;">
     <div id="list">
+      <ion-card *ngFor="let articulo of articulos" style="border-radius:10px; width:90vw; margin:20px 5vw;">
+        <ion-card-header>
+          <img [src]="articulo" style="border-radius:10px;">
+          <ion-card-title style="font-size:20px; margin-top:10px;">Nombre del Producto</ion-card-title>
+          <br>
+          <ion-card-subtitle>Breve descripción</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-button color="primary" expand="block" fill="outline" style="display:block;margin:0 auto;">
+            Consultar
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <ion-button style="font-size:16px; width:90vw;position:relative;left:5vw;" color="primary" expand="block" id="cargarMasProductos" shape="round">
+        CARGAR MÁS
+    </ion-button>
+
+  </div>
+
+  <div id="ofertas" style="display:none;">
+    <div style="width:95vw;position:relative;left:2.5vw;margin-top: 2vh;height:200px;background-image:url('../../assets/ofertas_bkg.png');background-repeat:no-repeat;background-size:100% 100%;">
+      <h1 style="color:grey; position:relative;text-align:center;margin-top:15vh;font-size:20px;">Aún no hay cupones de descuento en este comercio</h1>
+    </div>
+  </div>
+
+  <div id="opiniones" style="display:none;">
+    <div id="lista_de_opiniones">
+      <ion-card style="border-radius:10px; width:90vw; margin:20px 5vw;">
+        <ion-card-header>
+          <div style="position:relative;left:20px;font-size:40px;" id="rating">
+            <p style="color:gold; font-size:50px; position:relative; left:-20px;top:-10px;">⋆⋆⋆⋆⋆</p>
+          </div>
+          <ion-card-title style="font-size:20px; position:relative; top:-3vh;">Aquí va el texto de la opinión :D</ion-card-title>
+          <br>
+          <ion-card-subtitle>Username - fecha de publicación del comentario</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-button color="primary" expand="block" fill="outline" style="display:block;margin:0 auto;">
+            Responder
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <ion-button style="font-size:16px; width:90vw;position:relative;left:5vw;" color="primary" expand="block" id="cargarMasProductos" shape="round">
+        CARGAR MÁS
+    </ion-button>
+
+  </div>
+    
+  <ion-item style="position:relative;top:-21.5vh;margin-bottom:5px;margin-top:5px;width:90vw;left:5px;">
+    <ion-text text-align style="font-size:16px;">Sugerencias:</ion-text>
+  </ion-item>
+
+  <div id="list" style="position:relative;top:-17.5vh;">
       <ion-card *ngFor="let similar of comercio.SimilarBusinesses" style="border-radius:10px; width:80vw; margin:20px 10vw;">
         <ion-card-header>
           <ion-card-title style="font-size:20px;">{{similar.Name}}</ion-card-title>
@@ -131,12 +186,10 @@
         </ion-card-header>
         <ion-card-content>
           <ion-button color="primary" expand="block" fill="outline" style="display:block;margin:0 auto;">
-            ver
+            Consultar
           </ion-button>
         </ion-card-content>
       </ion-card>
-    </div>
-    
   </div>
 
 </ion-content>
